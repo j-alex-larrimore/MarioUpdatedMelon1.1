@@ -15,9 +15,7 @@ game.PlayerEntity = me.Entity.extend({
               height: 128,
               spritewidth: 128,
               spriteheight: 128,
-              getShape: function(){
-                return (new me.Rect(x, y, 128, 128)).toPolygon();
-                }
+              getShape: new me.TMXObject('none').getShape
        }]);
   
        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -37,6 +35,7 @@ game.PlayerEntity = me.Entity.extend({
            this.body.vel.x = 0;
        }
        
+      this.body.update(dt);
        return this._super(me.Entity, "update", [dt]);
   
        
